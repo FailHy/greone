@@ -47,6 +47,7 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
+            'role'     => 'user' // tiap register auto jadi user
         ]);
 
         return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login!');
