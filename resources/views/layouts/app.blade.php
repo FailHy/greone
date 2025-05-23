@@ -80,9 +80,9 @@
     </header>
 
     <!-- Carousel -->
-    @php
-$path = request()->path();
-$showCarousel = !in_array($path, ['chart', 'profil', 'kontak']);
+@php
+    $path = request()->path();
+    $showCarousel = !in_array($path, ['chart', 'profil', 'kontak', 'login', 'register']);
 @endphp
 
 @if ($showCarousel)
