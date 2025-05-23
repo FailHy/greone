@@ -80,29 +80,33 @@
     </header>
 
     <!-- Carousel -->
-        <div id="main-carousel" class="splide">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide">
-                        <img src="{{ asset('img/pict1.jpg') }}" alt="Produk Hidroponik">
-                    </li>
-                    <li class="splide__slide">
-                        <img src="{{ asset('img/pict2.jpg') }}" alt="Kebun Hidroponik">
-                    </li>
-                    <li class="splide__slide">
-                        <img src="{{ asset('img/pict3.jpg') }}" alt="Sayuran Segar">
-                    </li>
-                </ul>
-            </div>
-        </div>
+    @php
+$path = request()->path();
+$showCarousel = !in_array($path, ['chart', 'profil', 'kontak']);
+@endphp
+
+@if ($showCarousel)
+<!-- Carousel -->
+<div id="main-carousel" class="splide">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide">
+                <img src="{{ asset('img/pict1.jpg') }}" alt="Produk Hidroponik">
+            </li>
+            <li class="splide__slide">
+                <img src="{{ asset('img/pict2.jpg') }}" alt="Kebun Hidroponik">
+            </li>
+            <li class="splide__slide">
+                <img src="{{ asset('img/pict3.jpg') }}" alt="Sayuran Segar">
+            </li>
+        </ul>
+    </div>
+</div>
+@endif
+
 
     <!-- Main Content -->
     <main class="flex-grow text-center py-20 px-6">
-    @php
-    $path = request()->path();
-    $showCarousel = !in_array($path, ['chart', 'profil', 'kontak']);
-    @endphp   
-    
          @yield('content')
     </main>
     
