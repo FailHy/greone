@@ -29,7 +29,7 @@
 <body class="flex flex-col min-h-screen bg-gray-50">
 
     <!-- Header -->
-    <header class="bg-green-700 text-white" x-data="{ open: false }">
+    <header class="bg-green-700 text-white fixed top-0 w-full z-50 shadow-md" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold">Bgd <span class="font-light">hydrofarm.</span></h1>
 
