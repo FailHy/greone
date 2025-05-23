@@ -23,6 +23,12 @@
         .splide {
             height: 70vh; /* Tinggi carousel disesuaikan */
         }
+
+        /* Tambahkan ke <style> di <head> */
+        .carousel-wrapper {
+            padding-top: 60px; /* samain dengan tinggi header */
+        }
+
         
     </style>
 </head>
@@ -87,7 +93,7 @@
 
 @if ($showCarousel)
 <!-- Carousel -->
-<div id="main-carousel" class="splide">
+<div id="main-carousel" class="splide carousel-wrapper">
     <div class="splide__track">
         <ul class="splide__list">
             <li class="splide__slide">
