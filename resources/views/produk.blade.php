@@ -3,8 +3,6 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
 
-    <h1 class="text-3xl font-bold mb-6 text-center">Belanja Sehat, Hidup Hijau</h1>
-
     {{-- Kategori: Sayur --}}
     <section class="mb-12">
         <h2 class="text-2xl font-semibold mb-4">Sayuran Hidroponik</h2>
@@ -41,7 +39,7 @@
 
     {{-- Kategori: Kebun --}}
     <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4">Peralatan Kebun</h2>
+        <h2 class="text-2xl font-semibold mb-4">Instalasi Kebun Hidroponik</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             @foreach ($kebun as $item)
             <div class="bg-white shadow rounded p-4 text-center">
