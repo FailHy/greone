@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ProdukController;
 
 // Halaman umum yang bisa diakses SEMUA ORANG (termasuk guest)
 Route::get('/', fn() => view('home'));
+
+Route::get('/produk', [ProdukController::class, 'index']);
 
 // Halaman yang hanya bisa diakses GUEST (belum login)
 Route::middleware('guest')->group(function () {
@@ -35,7 +38,7 @@ Route::middleware('auth')->group(function () {
 
 // Halaman umum yang hanya bisa diakses setelah login
 Route::middleware('auth')->group(function () {
-    Route::view('/produk', 'produk');
+    // Route::view('/produk', 'produk');
     Route::view('/artikel', 'artikel');
     Route::view('/tentang', 'tentang');
     Route::view('/kontak', 'kontak');
