@@ -10,12 +10,24 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'role',  // jangan lupa tambahkan ini agar bisa diisi mass assignable
+    //     'foto',
+    //     'jenis_kelamin',
+    //     'tanggal_lahir',
+    // ];
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',  // jangan lupa tambahkan ini agar bisa diisi mass assignable
-    ];
+    'name',
+    'email',
+    'password',
+    'jenis_kelamin',
+    'tanggal_lahir',
+    'foto',
+];
 
     protected $hidden = [
         'password',

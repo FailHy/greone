@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 // Halaman umum yang bisa diakses SEMUA ORANG (termasuk guest)
 Route::get('/', fn() => view('home'));
@@ -24,16 +25,16 @@ Route::middleware('guest')->group(function () {
 // Halaman yang hanya bisa diakses SETELAH LOGIN
 Route::middleware('auth')->group(function () {
     // Halaman profil khusus user yang login
-    Route::get('/profil', function () {
-        if (!Auth::check()) {
-        return redirect('/login')->with('error', 'Silakan login terlebih dahulu');
-    }
-    return view('profil', ['user' => Auth::user()]);
-    });
+    // Route::get('/profil', function () {
+    //     if (!Auth::check()) {
+    //     return redirect('/login')->with('error', 'Silakan login terlebih dahulu');
+    // }
+    // return view('profil', ['user' => Auth::user()]);
+    // });
 
     // Halaman chart (contoh halaman khusus logged in user)
     Route::get('/chart', fn() => view('chart'));
-    
+
     // Logout
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
@@ -75,3 +76,14 @@ Route::prefix('admin')
         Route::resource('kategoris', KategoriController::class);
     });
 
+//profile user
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+// });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
