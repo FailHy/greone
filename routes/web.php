@@ -8,6 +8,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AlamatController;
 
 // Halaman umum yang bisa diakses SEMUA ORANG (termasuk guest)
 Route::get('/', fn() => view('home'));
@@ -87,3 +88,28 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+// });
+
+
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('alamat', AlamatController::class);
+// });
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('alamat', AlamatController::class);
+});
+
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/alamat', [AlamatController::class, 'index'])->name('alamat.index');
+//     Route::get('/alamat/create', [AlamatController::class, 'create'])->name('alamat.create');
+//     Route::post('/alamat', [AlamatController::class, 'store'])->name('alamat.store');
+//     Route::get('/alamat/{id}/edit', [AlamatController::class, 'edit'])->name('alamat.edit');
+//     Route::put('/alamat/{id}', [AlamatController::class, 'update'])->name('alamat.update');
+//     Route::delete('/alamat/{id}', [AlamatController::class, 'destroy'])->name('alamat.destroy');
+// });

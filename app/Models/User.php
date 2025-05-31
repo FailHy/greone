@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->role === 'user';
     }
+
+     public function alamats()
+    {
+        return $this->hasMany(Alamat::class);
+    }
+
 }

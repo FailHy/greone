@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
-    // protected $primaryKey = 'id_produk';
+    protected $primaryKey = 'id_produk';
 
     protected $fillable = [
         'id_kategori', 'nama_produk', 'deskripsi_produk', 'stok_produk', 'harga_produk', 'gambar_produk'
