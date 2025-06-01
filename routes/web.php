@@ -9,6 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AlamatController;
+use App\Http\Controllers\AdminProfileController;
 
 // Halaman umum yang bisa diakses SEMUA ORANG (termasuk guest)
 Route::get('/', fn() => view('home'));
@@ -66,7 +67,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-// Admin route - hanya bisa diakses oleh user yang sudah login dan punya role 'admin'
+// Admin Only
 Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])
@@ -75,6 +76,11 @@ Route::prefix('admin')
 
         Route::resource('produks', ProdukController::class);
         Route::resource('kategoris', KategoriController::class);
+
+        // Profil admin
+        // Route::get('/profil', [AdminProfileController::class, 'index'])->name('profil.index');
+        // Route::get('/profil/edit', [AdminProfileController::class, 'edit'])->name('profil.edit');
+        // Route::patch('/profil', [AdminProfileController::class, 'update'])->name('profil.update');
     });
 
 //profile user
@@ -84,9 +90,14 @@ Route::prefix('admin')
 // });
 
 Route::middleware('auth')->group(function () {
+    // Halaman profil admin
+    // Route::get('/profil ', [AdminProfileController::class, 'index'])->name('profil.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //logout 
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Route::middleware('auth')->group(function () {

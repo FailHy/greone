@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Alamat;
 
 class ProfileController extends Controller
 {
@@ -17,8 +18,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
+    $user = $request->user();
+    $alamats = Alamat::where('user_id', $user->id)->get();
+
+    return view('profile.edit', [
+        'user' => $user,
+        'alamats' => $alamats
         ]);
     }
 
@@ -76,6 +81,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('status', 'profile deleted');
     }
 }

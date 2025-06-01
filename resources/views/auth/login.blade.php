@@ -31,6 +31,6 @@
         </button>
     </form>
 
-    <p style="margin-top: 20px; text-align: center;">Belum punya akun? <a href="/register">Daftar</a></p>
+    <p style="margin-top: 20px; text-align: center;">Belum punya akun? <a href="/register" style="color: #007bff" ><b>Daftar</b></a></p>
 </div>
 @endsection

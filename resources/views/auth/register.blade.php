@@ -33,6 +33,6 @@
         </button>
     </form>
 
-    <p style="margin-top: 20px; text-align: center;">Sudah punya akun? <a href="/login">Login di sini</a></p>
+    <p style="margin-top: 20px; text-align: center;">Sudah punya akun? <a href="/login" style="color: #28a745" ><b>Login di sini</b></a></p>
 </div>
 @endsection
