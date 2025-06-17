@@ -12,13 +12,8 @@ class Alamat extends Model
     protected $table = 'alamats';
 
     protected $fillable = [
-        'user_id',
-        'label',
-        'nama_penerima',
-        'nomor_hp',
-        'provinsi',
-        'kota',
-        'detail_alamat',
+        'user_id', 'label', 'nama_penerima', 'nomor_hp',
+        'provinsi', 'kota', 'detail_alamat'
     ];
 
     /**
